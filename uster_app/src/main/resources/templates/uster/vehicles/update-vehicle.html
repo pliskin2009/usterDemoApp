@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update Vehicle</title>
+    <meta brand="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+   
+    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+</head>
+
+<body>
+<nav th:replace="fragment/uster :: nav">  </nav>
+    <div class="container my-5">
+      <div th:switch="${vehicle}" class="container my-5">
+        <h3> Update Vehicle</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    
+                    <form action="#" th:action="@{/uster/vehicles/updateVehicle}" th:object="${vehicle}" method="post">
+                    <input type="hidden" name="id" id="id" th:field="*{id}"/>
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="brand" class="col-form-label">Brand</label> <input type="text" th:field="*{brand}" class="form-control" id="brand" placeholder="Brand"> <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="model" class="col-form-label">Model</label> <input type="text" th:field="*{model}" class="form-control" id="model" placeholder="Model"> <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="text-danger"></span>
+                            </div>
+                            
+                             <div class="form-group col-md-8">
+                                <label for="plate" class="col-form-label">Plate</label> <input type="text" th:field="*{plate}" class="form-control" id="plate" placeholder="Plate"> <span th:if="${#fields.hasErrors('plate')}" th:errors="*{plate}" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-8">
+                                <label for="licenseRequired" class="col-form-label">Required License</label> <input type="text" th:field="*{licenseRequired}" class="form-control" id="licenseRequired" placeholder="Required License"> <span th:if="${#fields.hasErrors('licenseRequired')}" th:errors="*{licenseRequired}" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                               <input type="submit" class="btn btn-primary" value="Save vehicle">
+                               <a href="/uster/vehicles" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Back to List</a>
+                               
+                            </div>
+
+                            <div class="form-group col-md-8"></div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+       </div>  <!-- Switch case -->
+    </div>
+</body>
+
+<footer th:replace="fragment/uster :: footer">  </footer>
+
+</html>

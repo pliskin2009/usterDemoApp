@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Driver</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+   
+    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+</head>
+
+<body>
+<nav th:replace="fragment/uster :: nav">  </nav>
+    <div class="container my-5">
+    
+    <!-- Active Phase Header -->
+      <div th:switch="${trip}" class="container my-5">
+        <div th:switch="${newForm}" class="container my-5">
+	                    <div th:case=0 class="col-md-6">
+        					<h3>Select new Trip Date</h3>
+        				</div>
+        				 <div th:case=1 class="col-md-6">
+        					<h3>Select Vehicle for the trip</h3>
+        				</div>
+        				 <div th:case=2 class="col-md-6">
+        					<h3>Select Driver for the trip</h3>
+        				</div>
+        				 <div th:case=3 class="col-md-6">
+        					<h3>Save the new Trip</h3>
+        				</div>
+        </div>
+        </div>
+        
+       
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                
+                 <!-- Error Div -->
+                <div th:if="${error != null}" id="errorDiv" class="form-group card-body col-md-15 bg-dark">
+                	<span class="text-danger bold" th:text="${error}">
+                		<label th:text="${error}" th:value="${error}"></label>
+                	</span>
+                </div>
+                    
+                    <form action="#" th:action="@{reloadNewTrip}" th:object="${trip}" method="post">
+                    
+                    <!--  
+                    <input type="hidden" name="vehicle" id="vehicle" th:field="*{vehicle}"/>
+                  	<input type="hidden" name="driver" id="driver" th:field="*{driver}"/>
+                  	-->
+                    	
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="date" class="col-form-label">Date</label>  
+                                <input type="date" value="*{trip.date}" class="form-control" id="date"
+              						th:value="${#calendars.format(trip.date,'yyyy-MM-dd')}" th:name="date" onchange="submit();" /> <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="text-danger"></span>
+                            </div>
+                      
+	                 
+                            <div th:hidden="${newForm != null AND newForm !='1' AND newForm !='2' AND newForm !='3' }" class="form-group col-md-8">
+                                <label for="date" class="col-form-label">Vehicle</label>  
+                                         
+                                <select   th:field="*{vehicle}" onchange="submit();" th:value="${selectedVehicle}">
+                         			<option value=""> -- </option>
+                         			<option th:each="vehicle : ${vehicles}"
+                            			th:value="${vehicle.id}"
+                            			th:utext="${vehicle.brand + ' | ' + vehicle.model+ ' | '+vehicle.plate + ' | '+vehicle.licenseRequired}"/>
+                  				</select><span th:if="${#fields.hasErrors('vehicle')}" th:errors="*{vehicle}" class="text-danger"></span>
+                            	
+                            </div>
+                           
+                            <div th:hidden="${newForm != null AND newForm !='2' AND newForm !='3'}" class="form-group col-md-8">
+                                <label for="date" class="col-form-label">Drivers</label>  
+                                 <select th:field="*{driver}" onchange="submit();" th:value="${selectedDriver}">
+                         			<option value=""> -- </option>
+                         			<option th:each="driver : ${drivers}"
+                            			th:value="${driver.id}"
+                            			th:utext="${driver.name + ' | ' + driver.surname+ ' | '+driver.license}"/>
+                  				</select><span th:if="${#fields.hasErrors('driver')}" th:errors="*{driver}" class="text-danger"></span>
+                            </div>
+                            
+							
+                           
+
+                            <div class="form-group col-md-8"></div>
+
+                        </div>
+                    </form>
+                    
+                  <form action="#" th:action="@{saveTrip}" th:object="${trip}" method="post">
+                  	<!-- <input type="hidden" name="id" id="id" th:field="*{id}"/>-->
+                  	<input type="hidden" name="date" id="date" th:field="*{date}"/>
+                  	<input type="hidden" name="vehicle" id="vehicle" th:field="*{vehicle}"/>
+                  	<input type="hidden" name="driver" id="driver" th:field="*{driver}"/>
+                  	
+                  
+	                <div  class="col-md-6">
+	                              
+	                              
+                    		<input th:if="${newForm=='3'}" type="submit" class="btn btn-primary" value="Save Trip">
+                    		<a href="trips" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Back to List</a>
+                    	
+                    </div>
+                       
+                   
+                  </form>
+                    
+                </div>
+            </div>
+        </div>
+       </div>  <!-- Switch case -->
+    </div>
+</body>
+
+<footer th:replace="fragment/uster :: footer">  </footer>
+
+</html>

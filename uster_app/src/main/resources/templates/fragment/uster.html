@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <title>USTER DEMO APP</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+    
+</head>
+<body>
+	<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">USTER DEMO</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	    <div class="navbar-nav">
+	      <a class="nav-item nav-link active" href="/uster/index">HOME <span class="sr-only">(current)</span></a>
+	      <a class="nav-item nav-link" href="/uster/drivers">DRIVERS</a>
+	      <a class="nav-item nav-link" href="/uster/vehicles">VEHICLES</a>
+	      <a class="nav-item nav-link" href="/uster/trips">TRIPS</a>
+	      
+	    </div>
+	  </div>
+	</nav>
+	
+	
+
+
+   
+        <!-- Footer -->
+	<footer th:fragment="footer" class="page-footer page-footer font-small mdb-color lighten-3 pt-4 fixed-bottom">
+		
+		
+		     <!-- Copyright -->
+		  <div class="footer-copyright text-center ">© 2019 Uster Demo by ViX:
+		    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+		  </div>
+		  <p></p>
+		  <!-- Copyright -->
+				<!-- Footer -->
+    </footer>
+</body>
+</html>

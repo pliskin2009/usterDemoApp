@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+</head>
+
+<header th:replace="fragment/uster :: head">  </header>
+
+<body>
+<nav th:replace="fragment/uster :: nav">  </nav>
+    <div class="container my-5">
+        <h3> USTER DEMO APP </h3>
+        <div class="card">
+            <div class="card-body">
+                <p class="my-5 bold">
+                    Demo Application for Learning and Test purposes presented on Java JDK8 + Spring MVC + Spring JPA + HTML5 + BOOTSTRAP + THYMELEAF
+               	</p>
+               	<p class="my-5">
+                    Basic concept simulation of Trip Check-in  using Drivers and Vehicles that store in H2 on memory Database, special features:
+                    <br>
+                    <ul>
+                    <li>Must be an 3 phases process: Date Selection,Vehicle Selection and Driver Selection.</li>
+					<li>Selecting Vehicles, you can only select an vehicle that is free on that date (First time you select one, the app only load free ones)</li>
+					<li>Selecting Driver, you can only select one free for that date and also  that his license its the required one for the selected vehicle (as above application will only load the free and correct ones after first check)</li>
+					</ul>
+               	</p>
+               	 <p class="my-5 bold">
+                    Navigation: You can navigate across the listings and make CRUD with them or push 'New Trip' to check an Trip.
+               	</p>
+               	  <div class="col-md-6">
+                      <a href="newTrip" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;New Trip</a>
+                  </div>
+            </div>
+        </div>
+    </div>
+ </body>
+ <footer th:replace="fragment/uster :: footer">  </footer>
+ </html>
+        
